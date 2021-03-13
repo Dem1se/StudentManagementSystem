@@ -8,7 +8,7 @@ def MarkEntry():
         try:
             marks = {
                 "ID": int(id_box.get()),
-                "Phyics": int(phy_box.get()),
+                "Physics": int(phy_box.get()),
                 "Chemistry": int(chem_box.get()),
                 "Maths": int(math_box.get()),
                 "English": int(eng_box.get()),
@@ -91,4 +91,5 @@ def MarkEntry():
     cancel_button.place(x=210, y=230, width=90)
 
 class StudentNotFoundError(Exception):
-    pass
+    def __str__(self):
+        return "Student profile of given ID does not exist."
