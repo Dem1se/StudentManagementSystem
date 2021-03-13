@@ -1,24 +1,16 @@
-from tkinter import TOP, BOTTOM, Frame, Button, Toplevel
+from tkinter import N, Button, Tk
 from enroll_page import EnrollPage
 from mark_entry import MarkEntry
 from mark_display import MarkDisplay
 
 
-class HomePage(Frame):
-    # TODO: force only one toplevel window at a time
-    # currently multiple instances are allowed
+def HomePage():
+    root = Tk()
+    root.minsize(400, 300)
+    root.title("Student Management System")
 
-    def __init__(self, master=None):
-        Frame.__init__(self, master)
-        self.pack()
-        self.create_widgets()
+    enroll_button = Button(root, text="Add new student", command=EnrollPage, bg="#e38787").place(x=200, y=80, anchor=N)
+    mark_entry = Button(root, text="Enter Marks", command=MarkEntry, bg="#e38787").place(x=200, y=130, anchor=N)
+    enroll_button = Button(root, text="View Marks", command=MarkDisplay, bg="#e38787").place(x=200, y=180, anchor=N)
 
-    def create_widgets(self):
-        self.enroll_button = Button(self, text="Add new student", command=EnrollPage)
-        self.enroll_button.pack(side=TOP, pady=5, fill="x")
-
-        self.MarkEntry = Button(self, text="Enter Marks", command=MarkEntry)
-        self.MarkEntry.pack(side=TOP, pady=5)
-
-        self.enroll_button = Button(self, text="View Marks", command=MarkDisplay)
-        self.enroll_button.pack(side=BOTTOM, pady=5)
+    root.mainloop()
